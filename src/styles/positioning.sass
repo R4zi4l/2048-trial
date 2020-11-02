@@ -1,0 +1,70 @@
+$width: 400px
+$height: 400px
+
+$padding: 8px
+
+$move: 0.25s linear
+$create: 0.05s linear
+
+
+#playfield
+  box-sizing: border-box
+  position: relative
+  display: inline-flex
+  flex-flow: column nowrap
+  padding: $padding
+
+  *
+    box-sizing: border-box
+
+  .overlay
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    z-index: 100
+    display: flex
+    flex-flow: column nowrap
+    align-items: center
+    justify-content: center
+
+    h1
+      padding: $padding
+
+  .score
+    flex: 1 1 auto
+    margin: $padding 0
+
+  .grid
+    flex: 1 1 auto
+    position: relative
+    width: $width
+    height: $height
+    display: flex
+    flex-flow: column nowrap
+    margin-top: $padding
+
+  .row
+    flex: 1 1 auto
+    display: flex
+    flex-flow: row nowrap
+
+    & + .row
+      margin-top: $padding
+
+  .back
+    flex: 1 1 auto
+    position: relative
+
+    & + .back 
+      margin-left: $padding
+
+  .tile
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 10
+
+    transition: left $move, top $move, background $move, transform $create

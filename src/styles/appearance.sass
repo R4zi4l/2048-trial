@@ -1,0 +1,88 @@
+$radius: 4px
+
+#playfield
+  border-radius: $radius
+  background: rgb(190, 152, 109)
+  color: rgb(94, 71, 49)
+  border: 2px solid rgb(94, 71, 49)
+
+  *
+    border-radius: $radius
+
+  .overlay
+    background: rgba(154, 119, 79, 0.8)
+    color: rgb(245, 215, 189)
+
+    h1
+      font: bold 32px Arial
+
+    button
+      background: none
+      border: none
+      outline: none
+      font: 24px Arial
+      text-decoration: underline
+      cursor: pointer
+      color: inherit
+
+      &:hover
+        color: rgb(94, 71, 49)
+
+  .score
+    font: bold 32px Arial
+
+  .row + .row
+      margin-top: $padding
+
+  .back
+    background: rgb(245, 215, 189)
+
+    & + .back 
+      margin-left: $padding
+
+  .tile
+    text-align: center
+    background: rgba(255, 36, 0, 0.95)
+    font: bold 32px Arial
+
+    &.t2
+      background: rgba(255, 230, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t4
+      background: rgba(255, 206, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t8
+      background: rgba(255, 182, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t16
+      background: rgba(255, 158, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t32
+      background: rgba(255, 134, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t64
+      background: rgba(255, 120, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t128
+      background: rgba(255, 108, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t256
+      background: rgba(255, 96, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t512
+      background: rgba(255, 84, 0, 0.95)
+      font: bold 48px Arial
+
+    &.t1024
+      background: rgba(255, 72, 0, 0.95)
+
+    &.t2048
+      background: rgba(255, 60, 0, 0.95)
