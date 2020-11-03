@@ -35,6 +35,7 @@ export class PlayField {
 
     this.setupKeyboardListener();
     this.setupMouseListener();
+    this.setupTouchListener();
 
     this.resetRound();
   }
@@ -111,6 +112,46 @@ export class PlayField {
       }
 
       clientX = clientY = undefined;
+    });
+  }
+
+  setupTouchListener() {
+    let clientX, clientY;
+
+    this.grid.addEventListener("touchstart", event => {
+      if (this.__lock) {
+        return;
+      }
+      
+      clientX = event.touches[0].clientX;
+      clientY = event.touches[0].clientY;
+
+      event.preventDefault();
+    }, {
+      passive: false
+    });
+
+    this.grid.addEventListener("touchend", event => {
+      if (clientX === undefined || clientY === undefined) {
+        return;
+      }
+      
+      clientX = event.changedTouches[0].clientX - clientX;
+      clientY = event.changedTouches[0].clientY - clientY;
+
+      if (Math.abs(clientX) > MOUSE_MOVE_ERROR || Math.abs(clientY) > MOUSE_MOVE_ERROR) {
+        if (Math.abs(clientX) >= Math.abs(clientY)) {
+          this.nextRound(clientX > 0 ? RightShiftIterator : LeftShiftIterator);
+        } else {
+          this.nextRound(clientY > 0 ? DownShiftIterator : UpShiftIterator);
+        }
+
+        event.preventDefault();
+      }
+
+      clientX = clientY = undefined;
+    }, {
+      passive: false
     });
   }
 
